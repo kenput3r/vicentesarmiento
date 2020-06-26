@@ -619,6 +619,7 @@ pre tt:after {
   color: #f1c80f;
   border-bottom: inset transparent;
   display: block;
+  font-weight: bold;
   padding: 15px;
   position: relative;
   margin-right: 10px;
