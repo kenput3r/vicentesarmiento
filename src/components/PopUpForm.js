@@ -54,10 +54,11 @@ const Underlined = styled.span`
 const text = {
   h1: {
     english: `JOIN`,
-    spanish: ``
+    spanish: `ÚNETE`
   },
   h2: {
-    english: `THE TEAM`
+    english: `THE TEAM`,
+    spanish: `AL EQUIPO`
   },
   h5: {
     english: `Subscribe`,
@@ -65,7 +66,7 @@ const text = {
   },
   h5_small: {
     english: `subscribe to our newsletter to stay in the loop`,
-    spanish: ``
+    spanish: `suscríbete a nuestro boletín para mantenerte informado`
   },
   firstName: {
     english: `* First Name`,
@@ -84,8 +85,8 @@ const text = {
     spanish: `Correo Electrónico`
   },
   submit: {
-    english: `JOIN US`,
-    spanish: ``
+    english: `JOIN`,
+    spanish: `ENVIAR`
   }
 }
 
