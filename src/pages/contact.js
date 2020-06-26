@@ -270,6 +270,10 @@ const text = {
     english: `learn how you can make a difference`,
     spanish: `aprende cómo puedes hacer la diferencia`
   },
+  h2: {
+    english: `Send a message`,
+    spanish: `Enviar un mensaje`
+  },
   firstName: {
     english: `* First Name`,
     spanish: `* Primer Nombre`
@@ -354,7 +358,7 @@ const Contact = () => {
         <Table>
           <Row>
             <Cell>
-              <h2 style={{maxWidth: 420, margin:"0 auto"}}>Send a message</h2>
+              <h2 style={{maxWidth: 420, margin:"0 auto"}}>{text.h2[language]}</h2>
               <Form name="contact" id="ContactForm" method="POST" data-netlify="true">
                 <input type="hidden" name="form-name" value="contact" />
                 <Input name="fName" required type="text" placeholder={text.firstName[language]} onChange={event => setFname(event.target.value)} />
@@ -363,22 +367,22 @@ const Contact = () => {
                 <Input name="phone" type="tel" placeholder={text.phoneNumber[language]} onChange={event => setPhone(event.target.value)} />
                 <CheckBoxes>
                   <Label>
-                    <input type="checkbox" defaultChecked={getYardSign} onChange={() => setGetYardSign(!getYardSign)} value="Send me a yard sign" />
+                    <input type="checkbox" defaultChecked={getYardSign} onChange={() => setGetYardSign(!getYardSign)} name="send_yard_sign" value="Send me a yard sign" />
                     <span></span>
                     <small>{text.sendYardSign[language]}</small>
                   </Label>
                   <Label>
-                    <input type="checkbox" defaultChecked={volunteer} onChange={() => setVolunteer(!volunteer)} value="I would like to volunteer" />
+                    <input type="checkbox" defaultChecked={volunteer} onChange={() => setVolunteer(!volunteer)} name="volunteer" value="I would like to volunteer" />
                     <span></span>
                     <small>{text.volunteer[language]}</small>
                   </Label>
                   <Label>
-                    <input type="checkbox" defaultChecked={makeDonation} onChange={() => setMakeDonation(!makeDonation)} value="I would like to make a donation" />
+                    <input type="checkbox" defaultChecked={makeDonation} onChange={() => setMakeDonation(!makeDonation)} name="make_donation" value="I would like to make a donation" />
                     <span></span>
                     <small>{text.makeDonation[language]}</small>
                   </Label>
                 </CheckBoxes>
-                <TextArea name="message" placeholder="Message"></TextArea>
+                <TextArea name="message" placeholder={text.message[language]}></TextArea>
                 <Label>
                   <input type="checkbox" defaultChecked={sendNewsletter} onChange={() => setSendNewsletter(!sendNewsletter)} />
                   <span></span>
