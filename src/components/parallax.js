@@ -39,12 +39,13 @@ const Title = styled.div`
     background-color: #f1c80f;
     display: table-cell;
     margin-left: 0;
-    max-width: 100%;
+    max-width: 100vw;
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 10px;
     position: relative;
     top: 0;
+    width: 100vw;
   }
 `
 const Heading1 = styled.div`
