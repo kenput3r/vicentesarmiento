@@ -17,13 +17,13 @@ const HeroContainer = styled.div`
   .HeroBackground {
     background-attachment: fixed;
     height: 100vh;
-    @media (max-width: 767px) {
+    @media (max-width: 1024px) {
       background-attachment: scroll;
     }
 
     :before, :after {
       background-attachment: fixed;
-      @media (max-width: 767px) {
+      @media (max-width: 1024px) {
         background-attachment: scroll;
       }
     }
