@@ -18,7 +18,7 @@ const StyledMenu = styled.nav`
   transition: transform 0.3s ease-in-out;
   transform: ${({ drawerOpen }) => drawerOpen ? 'translateX(0)' : 'translateX(-100%)'};
   
-  @media (max-width: 767px) {
+  @media (max-width: 1024px) {
     display: flex;
     width: 100%;
   }
@@ -30,6 +30,7 @@ const StyledMenu = styled.nav`
     font-weight: bold;
     letter-spacing: 0.5rem;
     color: #f1c80f;
+    text-align: center;
     text-decoration: none;
     transition: color 0.3s linear;
     

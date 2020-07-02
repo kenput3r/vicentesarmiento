@@ -15,7 +15,7 @@ const Container = styled.nav`
     position: relative;
     max-height: 75px;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 1025px) {
     display: none;
   }
 `

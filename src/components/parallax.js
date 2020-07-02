@@ -10,6 +10,10 @@ const Container = styled.div`
   background-position: right;
   height: 100vh;
 
+  @media (max-width: 1024px) {
+    background-attachment: scroll;
+  }
+
   @media (max-width: 767px) {
     background-attachment: scroll;
     background-repeat: no-repeat;
@@ -52,6 +56,12 @@ const Heading1 = styled.div`
   font-size: 1.5rem;
   margin-bottom: 5px;
   text-transform: uppercase;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    color: #000;
+    -webkit-text-fill-color: #273884;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #ffffff;
+  }
 `
 const Heading2 = styled.div`
   color: #ffffff;
@@ -59,6 +69,12 @@ const Heading2 = styled.div`
   margin-bottom: 5px;
   font-size: 2.5rem;
   text-transform: uppercase;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    color: #000;
+    -webkit-text-fill-color: #ffffff;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #273884;
+  }
 `
 const Parallax = () => {
   const text = {

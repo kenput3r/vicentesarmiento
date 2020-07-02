@@ -15,7 +15,7 @@ const DesktopHeader = styled.nav`
   width: 100%;
   z-index: 2;
 
-  @media (max-width: 767px) {
+  @media (max-width: 1024px) {
     display: none;
   }
 `

@@ -34,7 +34,7 @@ const Left = styled.div`
   display: table-cell;
   width: 50%;
   vertical-align: top;
-  @media (max-width: 767px) {
+  @media (max-width: 1024px) {
     display: block;
     width: 100%;
   }
@@ -43,7 +43,7 @@ const Right = styled.div`
   display: table-cell;
   width: 50%;
   text-align: right;
-  @media (max-width: 767px) {
+  @media (max-width: 1024px) {
     display: block;
     width: 100%;
     text-align: center;
@@ -52,6 +52,9 @@ const Right = styled.div`
 const Form = styled.form`
   width: 400px;
   max-width: 100%;
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
   input {
     height: 60px;
     border: 1px solid rgb(34, 66, 137);
@@ -75,6 +78,9 @@ const Form = styled.form`
       :hover {
         cursor: pointer;
       }
+      @media (max-width: 1024px) {
+        width: 28%;
+      }
     }
   }
 `
@@ -94,11 +100,19 @@ const List = styled.ul`
 `
 const Links = styled.div`
   display: table;
+  margin: 0 auto;
+  @media (max-width: 767px) {
+    margin: 0;
+  }
 
   div {
     display: table-cell;
+    @media (max-width: 1024px) {
+      padding: 30px;
+    }
     @media (max-width: 767px) {
       display: block;
+      padding: 0;
       width: 100%;
     }
   }
@@ -131,6 +145,9 @@ const Disclaimers = styled.div`
   margin-left: auto;
   width: 435px;
   max-width: 100%;
+  @media (max-width: 1024px) {
+    margin-right: auto;
+  }
   span {
     border: 1px solid;
     padding: 17px 24px;

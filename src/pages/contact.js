@@ -17,6 +17,9 @@ const Container = styled.div`
     display: table;
     margin-bottom: 125px;
   }
+  @media (max-width: 1024px) {
+    top: 90px;
+  }
   @media (max-width: 767px) {
     top: 75px;
     &:after {
