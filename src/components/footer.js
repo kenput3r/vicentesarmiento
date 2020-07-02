@@ -100,7 +100,10 @@ const List = styled.ul`
 `
 const Links = styled.div`
   display: table;
-  margin: 0 auto;
+  margin: 0;
+  @media (max-width: 1024px) {
+    margin: 0 auto;
+  }
   @media (max-width: 767px) {
     margin: 0;
   }
