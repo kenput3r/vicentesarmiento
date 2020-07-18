@@ -668,7 +668,7 @@ pre tt:after {
   padding-bottom: 56.25%; /* 16:9 */
   height: 0;
 }
-.videoWrapper iframe {
+.videoWrapper iframe, .videoWrapper video {
   position: absolute;
   top: 0;
   left: 0;
@@ -769,4 +769,19 @@ div#gdpr_text {
     text-align: center;
     width: 100%;
   }
+}
+
+/**video changes**/
+.videoWrapper iframe, .videoWrapper video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+.fb-video {
+  width: 100% !important;
+}
+.fb-video span {
+  width: 100% !important;
 }

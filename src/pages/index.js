@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import Layout from "../components/layout"
 import Header from "../components/header"
+import PageHeader from "../components/PageHeader"
 import SEO from "../components/seo"
 import Videos from "../components/videos"
 import Hero from "../components/hero"
@@ -32,7 +33,7 @@ const HeroContainer = styled.div`
 
 const IndexPage = () => (
   <Layout location="/">
-    <Header />
+    <PageHeader />
     <SEO title="Vicente Sarmiento" />
     <HeroContainer id="HeroContainer">
       <Hero />
