@@ -11,9 +11,9 @@ import Parallax from "../components/parallax"
 import PopUpForm from "../components/PopUpForm"
 
 const HeroContainer = styled.div`
-  @media (max-width: 767px) {
-    margin-top: 91px;
-  }
+  // @media (max-width: 767px) {
+  //   margin-top: 91px;
+  // }
 
   .HeroBackground {
     background-attachment: fixed;
