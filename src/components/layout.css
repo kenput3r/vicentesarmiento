@@ -772,7 +772,7 @@ div#gdpr_text {
 }
 
 /**video changes**/
-.videoWrapper iframe, .videoWrapper video {
+/* .videoWrapper iframe, .videoWrapper video {
   position: absolute;
   top: 0;
   left: 0;
@@ -784,4 +784,4 @@ div#gdpr_text {
 }
 .fb-video span {
   width: 100% !important;
-}
+} */
