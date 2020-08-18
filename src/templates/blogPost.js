@@ -46,7 +46,7 @@ export default function Template({
   const { markdownRemark } = data // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark
   return (
-    <Layout location="/blog">
+    <Layout location={frontmatter.slug}>
       <SEO title={frontmatter.title + " - " + frontmatter.date} />
       <PageHeader />
       <Container>
