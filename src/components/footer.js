@@ -22,6 +22,9 @@ const Container = styled.footer`
     display: block;
     padding: 20px 35px;
   }
+  @media (max-width: 320px) {
+    padding: 20px 20px;
+  }
   a {
     color: rgb(34, 66, 137);
     text-decoration: none;
@@ -80,6 +83,9 @@ const Form = styled.form`
       }
       @media (max-width: 1024px) {
         width: 28%;
+      }
+      @media (max-width: 320px) {
+        padding: 18px 10px;
       }
     }
   }
@@ -141,6 +147,9 @@ const Social = styled.div`
     @media (max-width: 767px) {
       margin-left: 24px;
     }
+    @media (max-width: 320px) {
+      margin-left: 20px;
+    }
   }
 `
 const Disclaimers = styled.div`
@@ -161,31 +170,29 @@ const Disclaimers = styled.div`
   }
 `
 
-
 const postContact = async (event, email, phone, callBack, thanks, submit) => {
   event.preventDefault()
-  const body = {email: email, phone: phone}
-  if(email !== '' || phone !== '') {
+  const body = { email: email, phone: phone }
+  if (email !== "" || phone !== "") {
     try {
-      const response = await fetch('/.netlify/functions/create-contact', {
-        method: 'POST',
-        body: JSON.stringify(body)
+      const response = await fetch("/.netlify/functions/create-contact", {
+        method: "POST",
+        body: JSON.stringify(body),
       })
-      if(!response.error) {
-        console.log('no errors')
+      if (!response.error) {
+        console.log("no errors")
         callBack(`${thanks}!`)
         setTimeout(() => {
           callBack(submit)
         }, 3000)
-      }else{
+      } else {
         console.log(response.error)
       }
-    }catch(error) {
+    } catch (error) {
       console.log(error)
     }
   }
 }
-
 
 const Footer = () => {
   const text = {
@@ -193,32 +200,32 @@ const Footer = () => {
     ...platformText,
     email: {
       english: `Email Address`,
-      spanish: `Correo Electrónico`
+      spanish: `Correo Electrónico`,
     },
     phone: {
       english: `Phone Number`,
-      spanish: `Número De Teléfono`
+      spanish: `Número De Teléfono`,
     },
     submit: {
       english: `Join Us`,
-      spanish: `Enviar`
+      spanish: `Enviar`,
     },
     thanks: {
       english: `Thanks`,
-      spanish: `Gracias`
+      spanish: `Gracias`,
     },
     disclaimers: {
       paidForBy: {
         english: `Paid for by Sarmiento for Mayor 2020 #1425828`,
-        spanish: `Pagado por Sarmiento para el alcalde 2020 #1425828`
+        spanish: `Pagado por Sarmiento para el alcalde 2020 #1425828`,
       },
       supportTheCampaign: {
         english: `Support our mayoral campaign to elect Vicente Sarmiento by signing up to`,
-        spanish: `Apoye nuestra campaña para elegir a Vicente Sarmiento como alcalde registrándose como`
+        spanish: `Apoye nuestra campaña para elegir a Vicente Sarmiento como alcalde registrándose como`,
       },
       volunteer: {
         english: `volunteer`,
-        spanish: `voluntario`
+        spanish: `voluntario`,
       },
       make: {
         english: `or by making a`,
@@ -226,16 +233,16 @@ const Footer = () => {
       },
       donationOnline: {
         english: `donation online`,
-        spanish: `donación en línea`
+        spanish: `donación en línea`,
       },
       rightsReserved: {
         english: `All rights reserved.`,
-        spanish: `Todos los derechos reservados.`
-      }
-    }
+        spanish: `Todos los derechos reservados.`,
+      },
+    },
   }
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState("")
+  const [phone, setPhone] = useState("")
   const [submitText, setSubmitText] = useState(text.submit[language])
   return (
     <Container>
@@ -255,57 +262,127 @@ const Footer = () => {
             </div>
             <div className="input">
               <input type="tel" onChange={e => setPhone(e.target.value)} />
-              <input type="submit" value={submitText} onClick={e => postContact(e, email, phone, setSubmitText, text.thanks[language], text.submit[language])} />
+              <input
+                type="submit"
+                value={submitText}
+                onClick={e =>
+                  postContact(
+                    e,
+                    email,
+                    phone,
+                    setSubmitText,
+                    text.thanks[language],
+                    text.submit[language]
+                  )
+                }
+              />
             </div>
           </FieldSet>
         </Form>
         <Links>
           <div>
             <List>
-              <li><Link to="/">{text.home[language]}</Link></li>
-              <li><Link to="/about/">{text.about[language]}</Link></li>
-              <li><Link to="/contact/">{text.contact[language]}</Link></li>
-              <li><Link to="/gallery/">{text.media[language]}</Link></li>
+              <li>
+                <Link to="/">{text.home[language]}</Link>
+              </li>
+              <li>
+                <Link to="/about/">{text.about[language]}</Link>
+              </li>
+              <li>
+                <Link to="/contact/">{text.contact[language]}</Link>
+              </li>
+              <li>
+                <Link to="/gallery/">{text.media[language]}</Link>
+              </li>
             </List>
           </div>
           <div>
             <List>
-              <li><Link to="/issues/affordable-housing-in-santa-ana/">{text.affordableHousing.label[language]}</Link></li>
-              <li><Link to="/issues/homelessness-in-santa-ana/">{text.reducingHomelessness.label[language]}</Link></li>
-              <li><Link to="/issues/investing-in-santa-ana-youth/">{text.investmentInYouth.label[language]}</Link></li>
-              <li><Link to="/issues/public-health/">{text.publicHealth.label[language]}</Link></li>
-              <li><Link to="/issues/safer-neighborhoods-in-santa-ana/">{text.saferNeighborhoods.label[language]}</Link></li>
+              <li>
+                <Link to="/issues/affordable-housing-in-santa-ana/">
+                  {text.affordableHousing.label[language]}
+                </Link>
+              </li>
+              <li>
+                <Link to="/issues/homelessness-in-santa-ana/">
+                  {text.reducingHomelessness.label[language]}
+                </Link>
+              </li>
+              <li>
+                <Link to="/issues/investing-in-santa-ana-youth/">
+                  {text.investmentInYouth.label[language]}
+                </Link>
+              </li>
+              <li>
+                <Link to="/issues/public-health/">
+                  {text.publicHealth.label[language]}
+                </Link>
+              </li>
+              <li>
+                <Link to="/issues/safer-neighborhoods-in-santa-ana/">
+                  {text.saferNeighborhoods.label[language]}
+                </Link>
+              </li>
             </List>
           </div>
         </Links>
       </Left>
       <Right>
         <Social>
-          <a href="https://www.facebook.com/SarmientoForMayor/" title="Vicente Sarmiento on Facebook" target="_blank">
+          <a
+            href="https://www.facebook.com/SarmientoForMayor/"
+            title="Vicente Sarmiento on Facebook"
+            target="_blank"
+          >
             <Facebook />
           </a>
-          <a href="https://www.instagram.com/sarmientoformayor/" title="Viente Sarmiento on Instagram" target="_blank">
+          <a
+            href="https://www.instagram.com/sarmientoformayor/"
+            title="Viente Sarmiento on Instagram"
+            target="_blank"
+          >
             <Instagram />
           </a>
-          <a href="https://twitter.com/sarmiento4mayor" title="Vicente Sarmiento on Twitter" target="_blank">
+          <a
+            href="https://twitter.com/sarmiento4mayor"
+            title="Vicente Sarmiento on Twitter"
+            target="_blank"
+          >
             <Twitter />
           </a>
-          <a href="https://www.youtube.com/channel/UCzsCsW3YJZwkyVwTuqRe6ew" title="Vicente Sarmiento on YouTube" target="_blank">
+          <a
+            href="https://www.youtube.com/channel/UCzsCsW3YJZwkyVwTuqRe6ew"
+            title="Vicente Sarmiento on YouTube"
+            target="_blank"
+          >
             <YouTube />
           </a>
-          <a href="mailto:info@sarmientoformayor.com" title="Email Vicente Sarmiento" target="_blank">
+          <a
+            href="mailto:info@sarmientoformayor.com"
+            title="Email Vicente Sarmiento"
+            target="_blank"
+          >
             <Email />
           </a>
         </Social>
         <Disclaimers>
-          <p><span>{text.disclaimers.paidForBy[language]}</span></p>
-          <p>{text.disclaimers.supportTheCampaign[language]} <Link to="/contact/">{text.disclaimers.volunteer[language]}</Link> {text.disclaimers.make[language]} <a href="https://www.efundraisingconnections.com/c/VicenteSarmiento/">{text.disclaimers.donationOnline[language]}</a>.</p>
+          <p>
+            <span>{text.disclaimers.paidForBy[language]}</span>
+          </p>
+          <p>
+            {text.disclaimers.supportTheCampaign[language]}{" "}
+            <Link to="/contact/">{text.disclaimers.volunteer[language]}</Link>{" "}
+            {text.disclaimers.make[language]}{" "}
+            <a href="https://www.efundraisingconnections.com/c/VicenteSarmiento/">
+              {text.disclaimers.donationOnline[language]}
+            </a>
+            .
+          </p>
           <p>&copy; 2020. {text.disclaimers.rightsReserved[language]} </p>
         </Disclaimers>
       </Right>
     </Container>
   )
-
 }
 
 export default Footer
