@@ -23,12 +23,14 @@ const InlineBlock = styled.div`
   box-sizing: border-box;
   display: inline-block;
   width: calc(33% - 40px);
+  max-width: 100%;
   margin: 20px;
   padding: 10px;
   vertical-align: text-top;
 
   @media (max-width: 767px) {
     width: 100%;
+    margin: 20px 0;
   }
 
   .read-more {
