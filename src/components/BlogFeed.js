@@ -80,7 +80,6 @@ const text = {
 
 const BlogFeed = () => {
   const data = useStaticQuery(POSTS_QUERY)
-  console.log(data)
   return (
     <Container>
       <Wrapper>

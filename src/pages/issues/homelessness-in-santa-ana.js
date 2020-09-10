@@ -9,6 +9,7 @@ import PageHeader from "../../components/PageHeader"
 import SEO from "../../components/seo"
 import language from "../../components/language"
 import platformText from "../../components/platformText"
+import Video from "../../components/video"
 
 const Container = styled.div`
   position: relative;
@@ -100,7 +101,7 @@ const Table = styled.div`
     &:before,
     &:after {
       background: inherit;
-      content: '';
+      content: "";
       display: block;
       height: 50%;
       left: 0;
@@ -117,7 +118,7 @@ const Table = styled.div`
       transform: skewY(1.5deg);
       transform-origin: 100% 0;
     }
-    
+
     &:after {
       bottom: 0;
       transform: skewY(-1.5deg);
@@ -147,14 +148,18 @@ const Page = () => {
           }
         }
       }
-      english_reducingHomelessness_op0: file(relativePath: { eq: "reducing-homelessness_op0c.png" }) {
+      english_reducingHomelessness_op0: file(
+        relativePath: { eq: "reducing-homelessness_op0c.png" }
+      ) {
         childImageSharp {
           fluid(maxWidth: 400) {
             ...GatsbyImageSharpFluid
           }
         }
       }
-      spanish_reducingHomelessness_op0: file(relativePath: { eq: "reducing-homelessness_op0c-spanish.png" }) {
+      spanish_reducingHomelessness_op0: file(
+        relativePath: { eq: "reducing-homelessness_op0c-spanish.png" }
+      ) {
         childImageSharp {
           fluid(maxWidth: 400) {
             ...GatsbyImageSharpFluid
@@ -192,68 +197,91 @@ const Page = () => {
     }
   `)
   const text = {
-    ...platformText.reducingHomelessness
+    ...platformText.reducingHomelessness,
   }
-  return(
+  return (
     <Layout location="/issues/homelessness-in-santa-ana/">
       <PageHeader />
       <SEO title={text.label[language]} />
       <Container>
         <HeroContainer>
           <HeadingContainer>
-            <H1 className="page-title">
-              {text.label[language]}
-            </H1>
+            <H1 className="page-title">{text.label[language]}</H1>
           </HeadingContainer>
-          <Img fluid={Images.heroImage.childImageSharp.fluid} alt="Vicente Samrmiento and team working a food bank" />
+          <Img
+            fluid={Images.heroImage.childImageSharp.fluid}
+            alt="Vicente Samrmiento and team working a food bank"
+          />
         </HeroContainer>
         <Content>
           <Wrapper>
-            <div style={{textAlign: "center", maxWidth: 300, margin:"30px auto"}}>
-              <Img fluid={Images[`${language}_reducingHomelessness_op0`].childImageSharp.fluid} alt="Vicente Samrmiento and team working a food bank" />
+            <div
+              style={{
+                textAlign: "center",
+                maxWidth: 300,
+                margin: "30px auto",
+              }}
+            >
+              <Img
+                fluid={
+                  Images[`${language}_reducingHomelessness_op0`].childImageSharp
+                    .fluid
+                }
+                alt="Vicente Samrmiento and team working a food bank"
+              />
             </div>
-            <h2 style={{textAlign: "center"}}>{text.excerpt[language]}</h2>
+            <h2 style={{ textAlign: "center" }}>{text.excerpt[language]}</h2>
           </Wrapper>
           <Table className="yellow slanted sltr">
             <TableCell>
-            <Img fluid={Images.one.childImageSharp.fluid} alt="Health items being prepared for distribution" />
+              <Img
+                fluid={Images.one.childImageSharp.fluid}
+                alt="Health items being prepared for distribution"
+              />
             </TableCell>
             <TableCell>
-              <H3>
-                {text.bullets[0][language]}
-              </H3>
+              <H3>{text.bullets[0][language]}</H3>
             </TableCell>
           </Table>
           <Table>
             <TableCell>
-              <H3>
-                {text.bullets[1][language]} 
-              </H3>
+              <H3>{text.bullets[1][language]}</H3>
             </TableCell>
             <TableCell>
-              <Img fluid={Images.two.childImageSharp.fluid} alt="A man on a job interview" />
+              <Img
+                fluid={Images.two.childImageSharp.fluid}
+                alt="A man on a job interview"
+              />
             </TableCell>
           </Table>
           <Table className="yellow slanted sltr">
             <TableCell>
-              <Img fluid={Images.three.childImageSharp.fluid} alt="People in a health center" />
+              <Img
+                fluid={Images.three.childImageSharp.fluid}
+                alt="People in a health center"
+              />
             </TableCell>
             <TableCell>
-              <H3>
-                {text.bullets[2][language]}
-              </H3>
+              <H3>{text.bullets[2][language]}</H3>
             </TableCell>
           </Table>
           <Table>
             <TableCell>
-              <H3>
-                {text.bullets[3][language]}
-              </H3>
+              <H3>{text.bullets[3][language]}</H3>
             </TableCell>
             <TableCell>
-              <Img fluid={Images.four.childImageSharp.fluid} alt="A man supervising construction" />
+              <Img
+                fluid={Images.four.childImageSharp.fluid}
+                alt="A man supervising construction"
+              />
             </TableCell>
           </Table>
+        </Content>
+        <Content style={{ maxWidth: 1040, margin: "30px auto" }}>
+          <Video
+            src={`https://www.youtube.com/embed/BCNOhP9wzAU`}
+            title={`Reducing Homelessness In Santa Ana`}
+          />
         </Content>
       </Container>
     </Layout>
