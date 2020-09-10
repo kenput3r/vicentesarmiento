@@ -36,25 +36,25 @@ const Header = () => {
   const [headerBackground, setHeaderBackground] = useState(0)
   const [drawerOpen, setDrawerOpen] = useState(false)
 
-  const handleScroll = (e) => {
-    if(window.scrollY > lastScrollY) {
+  const handleScroll = e => {
+    if (window.scrollY > lastScrollY) {
       setLastScrollY(window.scrollY)
-      if(window.scrollY <= 250) {
+      if (window.scrollY <= 250) {
         setLogoWidth(400 - window.scrollY)
       }
-      if(headerBackground < 1) {
+      if (headerBackground < 1) {
         setHeaderBackground(window.scrollY * 0.005)
       }
     }
-    if(window.scrollY === 0) {
+    if (window.scrollY === 0) {
       setHeaderBackground(0)
     }
   }
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener("scroll", handleScroll)
     return function cleanup() {
-      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener("scroll", handleScroll)
     }
   }, [])
 
@@ -63,7 +63,7 @@ const Header = () => {
     logoTitle: {
       english: `Vicente Sarmiento for Mayor`,
       spanish: `Vicente Sarmiento para Alcalde`,
-    }
+    },
   }
 
   return (
@@ -73,21 +73,46 @@ const Header = () => {
         position: `fixed`,
         top: 0,
         width: `100%`,
-        zIndex: 100
+        zIndex: 100,
       }}
     >
       <DesktopHeader role="navigation">
-        <div style={{display:"table-cell", width:"30%"}}>
+        <div style={{ display: "table-cell", width: "30%" }}>
           <h1 style={{ margin: 0, maxWidth: logoWidth }}>
-            <a href="/" title={text.logoTitle[language]}><Logo /></a>
+            <a href="/" title={text.logoTitle[language]}>
+              <Logo />
+            </a>
           </h1>
         </div>
-        <div style={{display:"table-cell", width:"70%", textAlign:"right", verticalAlign:"middle"}}>
-          <div className="desktop-link"><Link to="/">{text.home[language]}</Link></div>
-          <div className="desktop-link"><Link to="/about/">{text.about[language]}</Link></div>
-          <div className="desktop-link"><Link to="/contact/">{text.contact[language]}</Link></div>
-          <div className="desktop-link"><Link to="/gallery/">{text.media[language]}</Link></div>
-          <Donate className="button" href="https://www.efundraisingconnections.com/c/VicenteSarmiento/">{text.donate[language]}</Donate>
+        <div
+          style={{
+            display: "table-cell",
+            width: "70%",
+            textAlign: "right",
+            verticalAlign: "middle",
+          }}
+        >
+          <div className="desktop-link">
+            <Link to="/">{text.home[language]}</Link>
+          </div>
+          <div className="desktop-link">
+            <Link to="/about/">{text.about[language]}</Link>
+          </div>
+          <div className="desktop-link">
+            <Link to="/contact/">{text.contact[language]}</Link>
+          </div>
+          <div className="desktop-link">
+            <Link to="/gallery/">{text.media[language]}</Link>
+          </div>
+          <div className="desktop-link">
+            <Link to="/updates/">UPDATES</Link>
+          </div>
+          <Donate
+            className="button"
+            href="https://www.efundraisingconnections.com/c/VicenteSarmiento/"
+          >
+            {text.donate[language]}
+          </Donate>
         </div>
       </DesktopHeader>
       <MobileHeader drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />

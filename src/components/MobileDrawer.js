@@ -16,8 +16,9 @@ const StyledMenu = styled.nav`
   top: 0;
   left: 0;
   transition: transform 0.3s ease-in-out;
-  transform: ${({ drawerOpen }) => drawerOpen ? 'translateX(0)' : 'translateX(-100%)'};
-  
+  transform: ${({ drawerOpen }) =>
+    drawerOpen ? "translateX(0)" : "translateX(-100%)"};
+
   @media (max-width: 1024px) {
     display: flex;
     width: 100%;
@@ -33,17 +34,17 @@ const StyledMenu = styled.nav`
     text-align: center;
     text-decoration: none;
     transition: color 0.3s linear;
-    
+
     @media (max-width: 767px) {
       font-size: 1.5rem;
       text-align: center;
     }
   }
-`;
+`
 
-const MobileDrawer = ({drawerOpen}) => {
+const MobileDrawer = ({ drawerOpen }) => {
   const text = {
-    ...navigationText
+    ...navigationText,
   }
   return (
     <StyledMenu drawerOpen={drawerOpen}>
@@ -51,6 +52,7 @@ const MobileDrawer = ({drawerOpen}) => {
       <Link to="/about/">{text.about[language]}</Link>
       <Link to="/contact/">{text.contact[language]}</Link>
       <Link to="/gallery">{text.media[language]}</Link>
+      <Link to="/updates">UPDATES</Link>
     </StyledMenu>
   )
 }
