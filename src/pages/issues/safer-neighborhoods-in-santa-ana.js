@@ -9,7 +9,7 @@ import PageHeader from "../../components/PageHeader"
 import SEO from "../../components/seo"
 import language from "../../components/language"
 import platformText from "../../components/platformText"
-import Video from "../../components/Video"
+import Video from "../../components/video"
 
 const Container = styled.div`
   position: relative;
