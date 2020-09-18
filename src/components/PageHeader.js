@@ -101,6 +101,9 @@ const PageHeader = () => {
           <div className="desktop-link">
             <Link to="/updates/">UPDATES</Link>
           </div>
+          <div className="desktop-link">
+            <Link to="/endorsements/">ENDORSEMENTS</Link>
+          </div>
           <Donate
             className="button"
             href="https://www.efundraisingconnections.com/c/VicenteSarmiento/"

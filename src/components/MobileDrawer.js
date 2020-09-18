@@ -53,6 +53,7 @@ const MobileDrawer = ({ drawerOpen }) => {
       <Link to="/contact/">{text.contact[language]}</Link>
       <Link to="/gallery">{text.media[language]}</Link>
       <Link to="/updates">UPDATES</Link>
+      <Link to="/endorsements">ENDORSEMENTS</Link>
     </StyledMenu>
   )
 }
