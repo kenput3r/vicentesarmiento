@@ -165,6 +165,20 @@ const H2 = styled.h2`
   border-bottom: 5px solid rgb(34, 66, 137);
   margin: 0 15px 15px;
 `
+const Button = styled.a`
+  color: #fff;
+  background-color: rgb(34, 66, 137);
+  display: inline-block;
+  padding: 10px;
+  border: 2px solid rgb(34, 66, 137);
+  margin-top: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  :hover {
+    color: rgb(34, 66, 137);
+    background-color: #fff;
+  }
+`
 const images = [
   image1,
   image2,
@@ -327,6 +341,15 @@ const Gallery = ({ data }) => {
               </a>
             </div>
           ))}
+          <div>
+            <Button
+              href="https://drive.google.com/drive/folders/11P4yF5cHRy1RBRawulfmH8pJixqqkbIQ?usp=sharing"
+              target="_blank"
+              rel="noopener"
+            >
+              ADDITIONAL PHOTOS
+            </Button>
+          </div>
         </Wrapper>
       </Container>
       <Dialog
