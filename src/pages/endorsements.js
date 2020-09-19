@@ -97,7 +97,7 @@ const formatItem = item => {
 }
 const Endorsements = () => {
   return (
-    <Layout>
+    <Layout location="/">
       <SEO title="Vicente Sarmiento's Endorsments" />
       <PageHeader />
       <Container>
