@@ -9,7 +9,6 @@ import PageHeader from "../../components/PageHeader"
 import SEO from "../../components/seo"
 import language from "../../components/language"
 import platformText from "../../components/platformText"
-import Video from "../../components/video"
 
 const Container = styled.div`
   position: relative;
@@ -276,12 +275,6 @@ const Page = () => {
               />
             </TableCell>
           </Table>
-        </Content>
-        <Content style={{ maxWidth: 1040, margin: "30px auto" }}>
-          <Video
-            src={`https://www.youtube.com/embed/BCNOhP9wzAU`}
-            title={`Reducing Homelessness In Santa Ana`}
-          />
         </Content>
       </Container>
     </Layout>
