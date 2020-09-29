@@ -9,6 +9,7 @@ import PageHeader from "../../components/PageHeader"
 import SEO from "../../components/seo"
 import language from "../../components/language"
 import platformText from "../../components/platformText"
+import Video from "../../components/video"
 
 const Container = styled.div`
   position: relative;
@@ -100,7 +101,7 @@ const Table = styled.div`
     &:before,
     &:after {
       background: inherit;
-      content: '';
+      content: "";
       display: block;
       height: 50%;
       left: 0;
@@ -117,7 +118,7 @@ const Table = styled.div`
       transform: skewY(1.5deg);
       transform-origin: 100% 0;
     }
-    
+
     &:after {
       bottom: 0;
       transform: skewY(-1.5deg);
@@ -140,21 +141,27 @@ const TableCell = styled.div`
 const Page = () => {
   const Images = useStaticQuery(graphql`
     query {
-      heroImage: file(relativePath: { eq: "affordable-housing-in-santa-ana.jpg" }) {
+      heroImage: file(
+        relativePath: { eq: "affordable-housing-in-santa-ana.jpg" }
+      ) {
         childImageSharp {
           fluid(maxWidth: 2048, quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }
       }
-      english_affordableHousing_op0: file(relativePath: { eq: "affordable-housing_op0d.png" }) {
+      english_affordableHousing_op0: file(
+        relativePath: { eq: "affordable-housing_op0d.png" }
+      ) {
         childImageSharp {
           fluid(maxWidth: 400) {
             ...GatsbyImageSharpFluid
           }
         }
       }
-      spanish_affordableHousing_op0: file(relativePath: { eq: "affordable-housing_op0d-spanish.png" }) {
+      spanish_affordableHousing_op0: file(
+        relativePath: { eq: "affordable-housing_op0d-spanish.png" }
+      ) {
         childImageSharp {
           fluid(maxWidth: 400) {
             ...GatsbyImageSharpFluid
@@ -168,7 +175,9 @@ const Page = () => {
           }
         }
       }
-      establish: file(relativePath: { eq: "affordable-housing-establish.png" }) {
+      establish: file(
+        relativePath: { eq: "affordable-housing-establish.png" }
+      ) {
         childImageSharp {
           fluid(maxWidth: 500) {
             ...GatsbyImageSharpFluid
@@ -192,68 +201,91 @@ const Page = () => {
     }
   `)
   const text = {
-    ...platformText.affordableHousing
+    ...platformText.affordableHousing,
   }
-  return(
+  return (
     <Layout location="/issues/affordable-housing-in-santa-ana/">
       <PageHeader />
       <SEO title={text.label[language]} />
       <Container>
         <HeroContainer>
           <HeadingContainer>
-            <H1 className="page-title">
-              {text.label[language]}
-            </H1>
+            <H1 className="page-title">{text.label[language]}</H1>
           </HeadingContainer>
-          <Img fluid={Images.heroImage.childImageSharp.fluid} alt="Aerial view of Santa Ana" />
+          <Img
+            fluid={Images.heroImage.childImageSharp.fluid}
+            alt="Aerial view of Santa Ana"
+          />
         </HeroContainer>
         <Content>
           <Wrapper>
-            <div style={{textAlign: "center", maxWidth: 300, margin:"30px auto"}}>
-              <Img fluid={Images[`${language}_affordableHousing_op0`].childImageSharp.fluid} alt="Vicente Samrmiento and team working a food bank" />
+            <div
+              style={{
+                textAlign: "center",
+                maxWidth: 300,
+                margin: "30px auto",
+              }}
+            >
+              <Img
+                fluid={
+                  Images[`${language}_affordableHousing_op0`].childImageSharp
+                    .fluid
+                }
+                alt="Vicente Samrmiento and team working a food bank"
+              />
             </div>
-            <h2 style={{textAlign: "center"}}>{text.excerpt[language]}</h2>
+            <h2 style={{ textAlign: "center" }}>{text.excerpt[language]}</h2>
           </Wrapper>
           <Table className="yellow slanted sltr">
             <TableCell>
-            <Img fluid={Images.build.childImageSharp.fluid} alt="People collaborating on a construction project" />
+              <Img
+                fluid={Images.build.childImageSharp.fluid}
+                alt="People collaborating on a construction project"
+              />
             </TableCell>
             <TableCell>
-              <H3>
-                {text.bullets[0][language]}
-              </H3>
+              <H3>{text.bullets[0][language]}</H3>
             </TableCell>
           </Table>
           <Table>
             <TableCell>
-              <H3>
-                {text.bullets[1][language]}
-              </H3>
+              <H3>{text.bullets[1][language]}</H3>
             </TableCell>
             <TableCell>
-              <Img fluid={Images.establish.childImageSharp.fluid} alt="People meeting in the middle" />
+              <Img
+                fluid={Images.establish.childImageSharp.fluid}
+                alt="People meeting in the middle"
+              />
             </TableCell>
           </Table>
           <Table className="yellow slanted sltr">
             <TableCell>
-              <Img fluid={Images.defend.childImageSharp.fluid} alt="People meeting a realtor at some available properties" />
+              <Img
+                fluid={Images.defend.childImageSharp.fluid}
+                alt="People meeting a realtor at some available properties"
+              />
             </TableCell>
             <TableCell>
-              <H3>
-                {text.bullets[2][language]}
-              </H3>
+              <H3>{text.bullets[2][language]}</H3>
             </TableCell>
           </Table>
           <Table>
             <TableCell>
-              <H3>
-                {text.bullets[3][language]} 
-              </H3>
+              <H3>{text.bullets[3][language]}</H3>
             </TableCell>
             <TableCell>
-              <Img fluid={Images.rent.childImageSharp.fluid} alt="Person receiving money in front of a house" />
+              <Img
+                fluid={Images.rent.childImageSharp.fluid}
+                alt="Person receiving money in front of a house"
+              />
             </TableCell>
           </Table>
+        </Content>
+        <Content style={{ maxWidth: 1040, margin: "30px auto" }}>
+          <Video
+            src={`https://www.youtube.com/embed/_jvr5uDdVTc`}
+            title={`Affordable Housing In Santa Ana`}
+          />
         </Content>
       </Container>
     </Layout>
