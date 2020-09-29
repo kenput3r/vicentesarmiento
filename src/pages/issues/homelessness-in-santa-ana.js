@@ -107,6 +107,7 @@ const Table = styled.div`
       position: absolute;
       right: 0;
       z-index: -1;
+      backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
     }
   }
