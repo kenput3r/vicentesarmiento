@@ -422,7 +422,7 @@ const Contact = () => {
                   onChange={event => setPhone(event.target.value)}
                 />
                 <CheckBoxes>
-                  <Label>
+                  {/* <Label>
                     <input
                       type="checkbox"
                       defaultChecked={getYardSign}
@@ -432,7 +432,7 @@ const Contact = () => {
                     />
                     <span></span>
                     <small>{text.sendYardSign[language]}</small>
-                  </Label>
+                  </Label> */}
                   <Label>
                     <input
                       type="checkbox"

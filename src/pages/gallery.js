@@ -35,6 +35,10 @@ import image19 from "../images/gallery/vicente-sarmiento-19.jpg"
 import image20 from "../images/gallery/vicente-sarmiento-20.jpg"
 import image21 from "../images/gallery/vicente-sarmiento-21.jpg"
 import image22 from "../images/gallery/vicente-sarmiento-22.jpg"
+import image23 from "../images/gallery/vicente-sarmiento-23.jpg"
+import image24 from "../images/gallery/vicente-sarmiento-24.jpg"
+import image25 from "../images/gallery/vicente-sarmiento-25.jpg"
+import image26 from "../images/gallery/vicente-sarmiento-26.jpg"
 
 const video1 =
   "https://drive.google.com/uc?export=download&id=1OAh7wgQC1MRyYR1NWcqVk5Ol9i-nBzWx"
@@ -232,6 +236,10 @@ const images = [
   image20,
   image21,
   image22,
+  image23,
+  image24,
+  image25,
+  image26,
 ]
 const image_alts = []
 image_alts[0] = "Vicente Sarmiento standing by a ballot drop box"
@@ -259,6 +267,10 @@ image_alts[18] = "Vicente Sarmiento at the Delhi Center"
 image_alts[19] = "Vicente Sarmiento with firefighters"
 image_alts[20] = "Vicente Sarmiento Santa Ana Police"
 image_alts[21] = "Vicente Sarmiento sitting at his desk"
+image_alts[22] = "Vicente Sarmiento with Becerra"
+image_alts[23] = "Vicente Sarmiento with former President Bill Clinton"
+image_alts[24] = "Vicente Sarmiento with Katie Porter"
+image_alts[25] = "Vicente Sarmiento with Governor Gavin Newsom"
 
 const Gallery = ({ data }) => {
   const [showDialog, setShowDialog] = useState(false)
@@ -809,6 +821,62 @@ export const Images = graphql`
       }
     }
     img22b: file(relativePath: { eq: "gallery/vicente-sarmiento-22.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 800) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    img23: file(relativePath: { eq: "gallery/vicente-sarmiento-23.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 400, maxHeight: 267) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    img23b: file(relativePath: { eq: "gallery/vicente-sarmiento-23.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 800) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    img24: file(relativePath: { eq: "gallery/vicente-sarmiento-24.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 400) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    img24b: file(relativePath: { eq: "gallery/vicente-sarmiento-24.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 800) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    img25: file(relativePath: { eq: "gallery/vicente-sarmiento-25.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 400, maxHeight: 267) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    img25b: file(relativePath: { eq: "gallery/vicente-sarmiento-25.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 800) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    img26: file(relativePath: { eq: "gallery/vicente-sarmiento-26.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 400, maxHeight: 267) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    img26b: file(relativePath: { eq: "gallery/vicente-sarmiento-26.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 800) {
           ...GatsbyImageSharpFluid
