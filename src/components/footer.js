@@ -294,6 +294,9 @@ const Footer = () => {
               <li>
                 <Link to="/gallery/">{text.media[language]}</Link>
               </li>
+              <li>
+                <Link to="/how-to-vote/">How To Vote</Link>
+              </li>
             </List>
           </div>
           <div>
