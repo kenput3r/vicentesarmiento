@@ -9,6 +9,7 @@ import Platform from "../components/platform"
 import Parallax from "../components/parallax"
 import PopUpForm from "../components/PopUpForm"
 import BlogFeed from "../components/BlogFeed"
+import HowToVoteVideoSection from "../components/HowToVoteVideoSection"
 
 const HeroContainer = styled.div`
   @media (max-width: 767px) {
@@ -43,6 +44,7 @@ const IndexPage = () => (
     <Parallax />
     <Videos />
     <BlogFeed />
+    <HowToVoteVideoSection />
     <PopUpForm />
   </Layout>
 )
