@@ -534,7 +534,7 @@ const Contact = () => {
                   </li>
                   <li>
                     Twitter{" "}
-                    <a href="https://twitter.com/sarmiento4mayor">
+                    <a href="https://twitter.com/mayor_sarmiento">
                       @sarmiento4mayor
                     </a>
                   </li>

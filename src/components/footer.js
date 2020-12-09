@@ -347,7 +347,7 @@ const Footer = () => {
             <Instagram />
           </a>
           <a
-            href="https://twitter.com/sarmiento4mayor"
+            href="https://twitter.com/mayor_sarmiento"
             title="Vicente Sarmiento on Twitter"
             target="_blank"
           >
