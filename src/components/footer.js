@@ -333,14 +333,14 @@ const Footer = () => {
       <Right>
         <Social>
           <a
-            href="https://www.facebook.com/SarmientoForMayor/"
+            href="https://www.facebook.com/MayorSarmiento"
             title="Vicente Sarmiento on Facebook"
             target="_blank"
           >
             <Facebook />
           </a>
           <a
-            href="https://www.instagram.com/sarmientoformayor/"
+            href="https://www.instagram.com/mayor_sarmiento/"
             title="Viente Sarmiento on Instagram"
             target="_blank"
           >

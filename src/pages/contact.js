@@ -522,14 +522,14 @@ const Contact = () => {
                 <ul>
                   <li>
                     Facebook{" "}
-                    <a href="https://facebook.com/sarmientoformayor">
+                    <a href="https://www.facebook.com/MayorSarmiento">
                       @sarmientoformayor
                     </a>
                   </li>
                   <li>
                     Instagram{" "}
                     <a href="https://instagram.com/sarmientoformayor">
-                      @sarmientoformayor
+                      @mayor_sarmiento
                     </a>
                   </li>
                   <li>
