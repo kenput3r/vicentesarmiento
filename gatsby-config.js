@@ -1,10 +1,10 @@
 const { createProxyMiddleware } = require("http-proxy-middleware")
 module.exports = {
   siteMetadata: {
-    title: `Sarmiento for Mayor`,
-    description: `Santa Ana City Council Member Vicente Sarmiento is running for Mayor of Santa Ana`,
+    title: `Mayor of Santa Ana`,
+    description: `Santa Ana City Mayor, Vicente Sarmiento`,
     author: `@kenput3r`,
-    language: `english`
+    language: `english`,
   },
   plugins: [
     `gatsby-plugin-styled-components`,
@@ -47,7 +47,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-facebook-pixel`,
       options: {
-        pixelId: '725943558180552',
+        pixelId: "725943558180552",
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
@@ -56,13 +56,13 @@ module.exports = {
   ],
   developMiddleware: app => {
     app.use(
-      '/.netlify/functions',
+      "/.netlify/functions",
       createProxyMiddleware({
-        target: 'http://localhost:9000',
+        target: "http://localhost:9000",
         pathRewrite: {
-          '/.netlify/functions': ''
+          "/.netlify/functions": "",
         },
       })
     )
-  }
+  },
 }

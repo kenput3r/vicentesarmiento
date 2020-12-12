@@ -62,27 +62,6 @@ const WinAnnouncement = () => {
         Thank you for electing me your next Mayor and I look forward to getting
         to work!
       </p>
-      <p>
-        I will be taking my oath of office on December 8, 2020 at 6pm and would
-        like to invite you to view the ceremony live on{" "}
-        <a
-          href="https://www.youtube.com/cityofsantaanavideos"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Santa Ana's YouTube channel.
-        </a>
-      </p>
-      <p className="center">
-        <a
-          className="button"
-          href="https://www.youtube.com/cityofsantaanavideos"
-          target="_blank"
-          rel="noreferrer"
-        >
-          City of Santa Ana on YouTube
-        </a>
-      </p>
     </SectionStyles>
   )
 }
