@@ -9,7 +9,6 @@ import Platform from "../components/platform"
 import Parallax from "../components/parallax"
 import PopUpForm from "../components/PopUpForm"
 import BlogFeed from "../components/BlogFeed"
-import HowToVoteVideoSection from "../components/HowToVoteVideoSection"
 import WinAnnouncement from "../components/winAnnouncement"
 
 const HeroContainer = styled.div`
@@ -46,7 +45,6 @@ const IndexPage = () => (
     <Parallax />
     <Videos />
     <BlogFeed />
-    <HowToVoteVideoSection />
     <PopUpForm />
   </Layout>
 )
