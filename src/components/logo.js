@@ -34,7 +34,7 @@ const Logo = () => {
     <Img
       fluid={data.logo.childImageSharp.fluid}
       {...styles}
-      alt="text reading: Vicente Sarmiento For Mayor"
+      alt="text reading: Vicente Sarmiento Mayor"
     />
   )
 }
