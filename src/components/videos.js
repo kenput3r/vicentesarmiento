@@ -23,7 +23,7 @@ const Videos = () => {
             title="Vicente Sarmiento is sworn in as mayor of Santa Ana"
             width="560"
             height="315"
-            src="https://www.youtube.com/embed/ZT5NE6x6vPA?rel=0"
+            src="https://www.youtube.com/embed/5wVPvye_YCk?rel=0"
             frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
