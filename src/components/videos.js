@@ -4,7 +4,7 @@ import language from "./language"
 const Videos = () => {
   const text = {
     h2: {
-      english: `Vicente Sworn In As Mayor Of Santa Ana`,
+      english: `Covid Update`,
       spanish: `Mensaje De Vicente`,
     },
   }

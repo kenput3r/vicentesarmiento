@@ -9,7 +9,6 @@ import Platform from "../components/platform"
 import Parallax from "../components/parallax"
 import PopUpForm from "../components/PopUpForm"
 import BlogFeed from "../components/BlogFeed"
-import WinAnnouncement from "../components/winAnnouncement"
 
 const HeroContainer = styled.div`
   @media (max-width: 767px) {
@@ -40,11 +39,10 @@ const IndexPage = () => (
     <HeroContainer id="HeroContainer">
       <Hero />
     </HeroContainer>
-    <WinAnnouncement />
-    <Platform />
+    <BlogFeed />
     <Parallax />
     <Videos />
-    <BlogFeed />
+    <Platform />
     <PopUpForm />
   </Layout>
 )
