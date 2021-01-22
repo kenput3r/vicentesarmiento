@@ -1,11 +1,9 @@
 ---
-slug: "/blog/covid-vaccine-santa-ana-1-18-2021"
-date: "2021-01-18"
-title: "Covid Vaccine Distribution"
+slug: "/blog/affordable-housing-oc-1-22-2021"
+date: "2021-01-22"
+title: "Four OC cities fail in bid to increase Santa Ana’s future housing requirement"
 ---
 
-Santa Ana residents that meet the eligibility requirements for Phase 1A of the Corona Virus vaccination distribution can now schedule an appointment to receive the vaccine on the <a href="https://othena.com/" target="_blank" rel="noreferrer">Othena website</a>
+Neighboring cities will soon be required to plan and build for an increasing demand for affordable housing.
 
-In addition to those that meet the eligibility requirements of Phase 1A, law enforcement working in high risk settings and residents that are 65 and older also qualify.
-
-For more info on eligibility of the Phase 1A distribution of the COVID-19 vaccine, <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/CDPH-Allocation-Guidelines-for-COVID-19-Vaccine-During-Phase-1A-Recommendations.aspx" target="_blank" rel="noreferrer">view the California Department of Public Health website</a>.
+<a href="https://www.ocregister.com/2021/01/15/four-oc-cities-fail-in-bid-to-increase-santa-anas-future-housing-requirement/" target="_blank" rel="noreferrer">Read the full article on the Orange County Register website</a>
