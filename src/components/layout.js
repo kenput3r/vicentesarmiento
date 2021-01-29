@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import "./layout.css"
 import Footer from "./footer"
-import LanguageToggle from "./LanguageToggle"
 
 const Main = styled.main`
   :after {
@@ -16,13 +15,12 @@ const Layout = ({ children, location }) => {
     <>
       <div
         style={{
-          backgroundColor:"#fff",
-          margin: `0 auto`
+          backgroundColor: "#fff",
+          margin: `0 auto`,
         }}
       >
         <Main>{children}</Main>
         <Footer />
-        <LanguageToggle location={location} />
       </div>
     </>
   )

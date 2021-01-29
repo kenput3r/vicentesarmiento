@@ -381,7 +381,10 @@ const Footer = () => {
             </a>
             .
           </p>
-          <p>&copy; 2020. {text.disclaimers.rightsReserved[language]} </p>
+          <p>
+            &copy; {new Date().getFullYear()}.{" "}
+            {text.disclaimers.rightsReserved[language]}{" "}
+          </p>
         </Disclaimers>
       </Right>
     </Container>
