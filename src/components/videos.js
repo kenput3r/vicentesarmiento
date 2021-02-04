@@ -20,15 +20,32 @@ const Videos = () => {
         <h2>{text.h2[language]}</h2>
         <div className="videoWrapper">
           <iframe
-            title="Vicente Sarmiento is sworn in as mayor of Santa Ana"
+            title="Santa Ana Update On Covid"
             width="560"
             height="315"
-            src="https://www.youtube.com/embed/5wVPvye_YCk?rel=0"
+            src="https://www.youtube.com/embed/XfiOuQgDR1I?rel=0"
             frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
         </div>
+        <p style={{ paddingTop: 5, paddingLeft: 5 }}>
+          <a
+            href="https://www.youtube.com/watch?v=n6QXYTlKEZo"
+            target="_blank"
+            rel="noreferrer"
+          >
+            en español
+          </a>{" "}
+          |{" "}
+          <a
+            href="https://www.youtube.com/watch?v=VHU6FvShQF0"
+            target="_blank"
+            rel="noreferrer"
+          >
+            bằng tiếng việt
+          </a>
+        </p>
       </div>
     </div>
   )
