@@ -4,7 +4,6 @@ import "@reach/dialog/styles.css"
 import styled from "styled-components"
 import language from "./language"
 
-
 const BoxedText = styled.div`
   font-weight: bold;
   font-size: 1.5rem;
@@ -54,65 +53,65 @@ const Underlined = styled.span`
 const text = {
   h1: {
     english: `JOIN`,
-    spanish: `ÚNETE`
+    spanish: `ÚNETE`,
   },
   h2: {
     english: `THE TEAM`,
-    spanish: `AL EQUIPO`
+    spanish: `AL EQUIPO`,
   },
   h5: {
     english: `Subscribe`,
-    spanish: ``
+    spanish: ``,
   },
   h5_small: {
     english: `subscribe to our newsletter to stay in the loop`,
-    spanish: `suscríbete a nuestro boletín para mantenerte informado`
+    spanish: `suscríbete a nuestro boletín para mantenerte informado`,
   },
   firstName: {
     english: `* First Name`,
-    spanish: ``
+    spanish: ``,
   },
   lastName: {
     english: `* Last Name`,
-    spanish: ``
+    spanish: ``,
   },
   phone: {
     english: `Phone Number`,
-    spanish: `Número De Teléfono`
+    spanish: `Número De Teléfono`,
   },
   email: {
     english: `Email Address`,
-    spanish: `Correo Electrónico`
+    spanish: `Correo Electrónico`,
   },
   submit: {
     english: `JOIN`,
-    spanish: `ENVIAR`
-  }
+    spanish: `ENVIAR`,
+  },
 }
 
 const postContact = async (event, email, phone, setIsOpen) => {
   event.preventDefault()
-  const contact_form = document.getElementById('SubscribeForm')
+  const contact_form = document.getElementById("SubscribeForm")
   let form_errors = false
-  for(let i = 0; i < contact_form.elements.length; i++) {
+  for (let i = 0; i < contact_form.elements.length; i++) {
     const element = contact_form.elements[i]
-    if(element.required && !element.value) {
+    if (element.required && !element.value) {
       form_errors = true
     }
   }
-  if(!form_errors) {
-    const body = {email: email, phone: phone}
+  if (!form_errors) {
+    const body = { email: email, phone: phone }
     try {
-      const response = await fetch('/.netlify/functions/create-contact', {
-        method: 'POST',
-        body: JSON.stringify(body)
+      const response = await fetch("/.netlify/functions/create-contact", {
+        method: "POST",
+        body: JSON.stringify(body),
       })
-      if(!response.error) {
-        console.log('no errors')
-      }else{
+      if (!response.error) {
+        console.log("no errors")
+      } else {
         console.log(response.error)
       }
-    }catch(error) {
+    } catch (error) {
       console.log(error)
     }
   }
@@ -120,27 +119,31 @@ const postContact = async (event, email, phone, setIsOpen) => {
 }
 
 const handleKeyDown = (event, callback) => {
-  if(event.keyCode === 13) {
+  if (event.keyCode === 13) {
     callback()
   }
 }
 
-const handleOpen = (setIsOpen) => {
+const handleOpen = setIsOpen => {
   document.cookie = "disable_popup=true;max-age=2592000"
   setIsOpen(true)
 }
 
-const handleClose = (setIsOpen) => {
-  setIsOpen(false)
-}
-
 const PopUpForm = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState("")
+  const [phone, setPhone] = useState("")
   const initialRef = useRef(null)
+
+  const handleClose = e => {
+    e.preventDefault()
+    setIsOpen(false)
+  }
+
   useEffect(() => {
-    if (!document.cookie.split('; ').find(row => row.startsWith('disable_popup'))) {
+    if (
+      !document.cookie.split("; ").find(row => row.startsWith("disable_popup"))
+    ) {
       setTimeout(() => {
         handleOpen(setIsOpen)
         console.log(document.cookie)
@@ -148,20 +151,26 @@ const PopUpForm = () => {
     }
   })
   return (
-    <Dialog isOpen={isOpen} initialFocusRef={initialRef} onDismiss={() => handleClose(setIsOpen)} aria-label="Email Sign Up Form">
-      <p style={{textAlign: "right", marginBottom: 0}}>
-        <a role="button" tabIndex="1" onClick={() => setIsOpen(false)} onKeyDown={(event) => handleKeyDown(event, () => handleClose(setIsOpen))}>&times;</a>
+    <Dialog
+      isOpen={isOpen}
+      initialFocusRef={initialRef}
+      onDismiss={e => handleClose(e)}
+      aria-label="Email Sign Up Form"
+    >
+      <p style={{ textAlign: "right", marginBottom: 0 }}>
+        <a
+          href="/"
+          role="button"
+          onClick={() => setIsOpen(false)}
+          onKeyDown={event => handleKeyDown(event, e => handleClose(e))}
+        >
+          &times;
+        </a>
       </p>
-      <BoxedText>
-        {text.h1[language]}
-      </BoxedText>
-      <BoxedText>
-        {text.h2[language]}
-      </BoxedText>
+      <BoxedText>{text.h1[language]}</BoxedText>
+      <BoxedText>{text.h2[language]}</BoxedText>
       <p>
-        <Underlined>
-          {text.h5_small[language]}
-        </Underlined>
+        <Underlined>{text.h5_small[language]}</Underlined>
       </p>
       <Form id="SubscribeForm">
         <FieldSet>
@@ -169,7 +178,11 @@ const PopUpForm = () => {
             <label>{text.email[language]}</label>
           </div>
           <div className="input">
-            <input type="email" onChange={e => setEmail(e.target.value)} ref={initialRef} />
+            <input
+              type="email"
+              onChange={e => setEmail(e.target.value)}
+              ref={initialRef}
+            />
           </div>
         </FieldSet>
         <FieldSet>
@@ -178,7 +191,11 @@ const PopUpForm = () => {
           </div>
           <div className="input">
             <input type="tel" onChange={e => setPhone(e.target.value)} />
-            <input type="submit" value={text.submit[language]} onClick={event => postContact(event, email, phone, setIsOpen)} />
+            <input
+              type="submit"
+              value={text.submit[language]}
+              onClick={event => postContact(event, email, phone, setIsOpen)}
+            />
           </div>
         </FieldSet>
       </Form>

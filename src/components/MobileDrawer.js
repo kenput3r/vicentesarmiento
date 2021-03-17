@@ -4,7 +4,25 @@ import { Link } from "gatsby"
 import language from "./language"
 import navigationText from "./navigationText"
 
-const StyledMenu = styled.nav`
+const MobileDrawer = ({ drawerOpen }) => {
+  const text = {
+    ...navigationText,
+  }
+  return (
+    <Component drawerOpen={drawerOpen}>
+      <Link to="/">{text.home[language]}</Link>
+      <Link to="/about/">{text.about[language]}</Link>
+      <Link to="/contact/">{text.contact[language]}</Link>
+      <Link to="/gallery">{text.media[language]}</Link>
+      <Link to="/blog/1">UPDATES</Link>
+      <Link to="/endorsements">ENDORSEMENTS</Link>
+    </Component>
+  )
+}
+
+export default MobileDrawer
+
+const Component = styled.nav`
   display: none;
   flex-direction: column;
   justify-content: center;
@@ -41,21 +59,3 @@ const StyledMenu = styled.nav`
     }
   }
 `
-
-const MobileDrawer = ({ drawerOpen }) => {
-  const text = {
-    ...navigationText,
-  }
-  return (
-    <StyledMenu drawerOpen={drawerOpen}>
-      <Link to="/">{text.home[language]}</Link>
-      <Link to="/about/">{text.about[language]}</Link>
-      <Link to="/contact/">{text.contact[language]}</Link>
-      <Link to="/gallery">{text.media[language]}</Link>
-      <Link to="/updates">UPDATES</Link>
-      <Link to="/endorsements">ENDORSEMENTS</Link>
-    </StyledMenu>
-  )
-}
-
-export default MobileDrawer

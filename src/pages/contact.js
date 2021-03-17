@@ -9,6 +9,339 @@ import PageHeader from "../components/PageHeader"
 import SEO from "../components/seo"
 import language from "../components/language"
 
+const Hero = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      heroImage: file(relativePath: { eq: "get-involved.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 2048, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
+  return (
+    <Img
+      fluid={data.heroImage.childImageSharp.fluid}
+      alt="Vicente Samrmiento and team working a food bank"
+    />
+  )
+}
+
+const postContact = async (
+  event,
+  email,
+  fName,
+  lName,
+  phone,
+  sendNewsletter
+) => {
+  event.preventDefault()
+  const contact_form = document.getElementById("ContactForm")
+  let form_errors = false
+  for (let i = 0; i < contact_form.elements.length; i++) {
+    const element = contact_form.elements[i]
+    if (element.required && !element.value) {
+      form_errors = true
+    }
+  }
+  if (!form_errors) {
+    if (sendNewsletter) {
+      const body = { email: email, fName: fName, lName: lName, phone: phone }
+      try {
+        const response = await fetch("/.netlify/functions/create-contact", {
+          method: "POST",
+          body: JSON.stringify(body),
+        })
+        if (!response.error) {
+          console.log("no errors")
+        } else {
+          console.log(response.error)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    contact_form.submit()
+  }
+}
+
+const text = {
+  h1: {
+    english: `Get Involved`,
+    spanish: `Involucrate`,
+  },
+  h1_small: {
+    english: `learn how you can make a difference`,
+    spanish: `aprende cómo puedes hacer la diferencia`,
+  },
+  h2: {
+    english: `Send a message`,
+    spanish: `Enviar un mensaje`,
+  },
+  firstName: {
+    english: `* First Name`,
+    spanish: `* Primer Nombre`,
+  },
+  lastName: {
+    english: `* Last Name`,
+    spanish: `* Apellido`,
+  },
+  phoneNumber: {
+    english: `Phone Number`,
+    spanish: `Número De Teléfono`,
+  },
+  emailAddress: {
+    english: `* Email Address`,
+    spanish: `* Correo Electrónico`,
+  },
+  sendYardSign: {
+    english: `Send me a yard sign`,
+    spanish: `Envíenme una letrero de yarda`,
+  },
+  volunteer: {
+    english: `I would like to volunteer`,
+    spanish: `Me gustaría ser voluntario`,
+  },
+  makeDonation: {
+    english: `I would like to make a donation`,
+    spanish: `Me gustaría hacer una donación`,
+  },
+  receiveEmails: {
+    english: `sign me up to receive campaign update emails`,
+    spanish: `registrame para recibir correos electrónicos de actualizaciones de la campaña`,
+  },
+  street: {
+    english: `* Street Address`,
+    spanish: `* Dirección`,
+  },
+  zip: {
+    english: `* Zip Code`,
+    spanish: `* Código postal`,
+  },
+  message: {
+    english: `Message`,
+    spanish: `Mensaje`,
+  },
+  h3: {
+    english: `Other ways to get connected`,
+    spanish: `Otras formas de conectarse`,
+  },
+  writeUs: {
+    english: `Write us at:`,
+    spanish: `Escríbenos a`,
+  },
+  emailUs: {
+    english: `Email us at:`,
+    spanish: `Envíenos un email a`,
+  },
+  followUs: {
+    english: `Follow us on:`,
+    spanish: `Siguenos`,
+  },
+  submit: {
+    english: `SUBMIT`,
+    spanish: `ENVIAR`,
+  },
+}
+
+const Contact = () => {
+  const [email, setEmail] = useState("")
+  const [fName, setFname] = useState("")
+  const [lName, setLname] = useState("")
+  const [phone, setPhone] = useState("")
+  //const [street, setStreet] = useState("")
+  //const [zip, setZip] = useState("")
+  const [sendNewsletter, setSendNewsletter] = useState(true)
+  //const [getYardSign, setGetYardSign] = useState(false)
+  const [volunteer, setVolunteer] = useState(false)
+  const [makeDonation, setMakeDonation] = useState(false)
+  return (
+    <Layout location="/contact">
+      <PageHeader />
+      <SEO title="Contact Vicente Sarmiento" />
+      <Container>
+        <HeroContainer>
+          <HeadingContainer>
+            <H1 className="page-title">
+              {text.h1[language]} <br />
+              <small>{text.h1_small[language]}</small>
+            </H1>
+          </HeadingContainer>
+          <Hero />
+        </HeroContainer>
+        <Table>
+          <Row>
+            <Cell>
+              <h2 style={{ maxWidth: 420, margin: "0 auto" }}>
+                {text.h2[language]}
+              </h2>
+              <Form
+                name="contact"
+                id="ContactForm"
+                method="POST"
+                data-netlify="true"
+              >
+                <input type="hidden" name="form-name" value="contact" />
+                <Input
+                  name="fName"
+                  required
+                  type="text"
+                  placeholder={text.firstName[language]}
+                  onChange={event => setFname(event.target.value)}
+                />
+                <Input
+                  name="lName"
+                  required
+                  type="text"
+                  placeholder={text.lastName[language]}
+                  onChange={event => setLname(event.target.value)}
+                />
+                <Input
+                  name="email"
+                  required
+                  type="email"
+                  placeholder={text.emailAddress[language]}
+                  onChange={event => setEmail(event.target.value)}
+                />
+                <Input
+                  name="phone"
+                  type="tel"
+                  placeholder={text.phoneNumber[language]}
+                  onChange={event => setPhone(event.target.value)}
+                />
+                <CheckBoxes>
+                  {/* <Label>
+                    <input
+                      type="checkbox"
+                      defaultChecked={getYardSign}
+                      onChange={() => setGetYardSign(!getYardSign)}
+                      name="send_yard_sign"
+                      value="Send me a yard sign"
+                    />
+                    <span></span>
+                    <small>{text.sendYardSign[language]}</small>
+                  </Label> */}
+                  <Label>
+                    <input
+                      type="checkbox"
+                      defaultChecked={volunteer}
+                      onChange={() => setVolunteer(!volunteer)}
+                      name="volunteer"
+                      value="I would like to volunteer"
+                    />
+                    <span></span>
+                    <small>{text.volunteer[language]}</small>
+                  </Label>
+                  <Label>
+                    <input
+                      type="checkbox"
+                      defaultChecked={makeDonation}
+                      onChange={() => setMakeDonation(!makeDonation)}
+                      name="make_donation"
+                      value="I would like to make a donation"
+                    />
+                    <span></span>
+                    <small>{text.makeDonation[language]}</small>
+                  </Label>
+                </CheckBoxes>
+
+                {/* <Address show={getYardSign}>
+                  <Input
+                    name="street"
+                    required={getYardSign}
+                    type="text"
+                    placeholder={text.street[language]}
+                    onChange={event => setStreet(event.target.value)}
+                  />
+                  <Input
+                    name="zip"
+                    required={getYardSign}
+                    type="text"
+                    placeholder={text.zip[language]}
+                    onChange={event => setZip(event.target.value)}
+                  />
+                </Address> */}
+
+                <TextArea
+                  name="message"
+                  placeholder={text.message[language]}
+                ></TextArea>
+                <Label>
+                  <input
+                    type="checkbox"
+                    defaultChecked={sendNewsletter}
+                    onChange={() => setSendNewsletter(!sendNewsletter)}
+                  />
+                  <span></span>
+                  <small>{text.receiveEmails[language]}</small>
+                </Label>
+                <Input
+                  type="submit"
+                  value={text.submit[language]}
+                  onClick={event =>
+                    postContact(
+                      event,
+                      email,
+                      fName,
+                      lName,
+                      phone,
+                      sendNewsletter
+                    )
+                  }
+                />
+              </Form>
+            </Cell>
+            <Cell className="valign-center">
+              <Data>
+                <h3>{text.h3[language]}</h3>
+                <p>
+                  <strong>{text.writeUs[language]}</strong> <br />
+                  Sarmiento for Mayor <br />
+                  PO Box 10162 <br />
+                  Santa Ana, CA 92711
+                </p>
+                <p>
+                  <strong>{text.emailUs[language]}</strong>{" "}
+                  <a href="mailto:info@sarmientoformayor.com">
+                    info@sarmientoformayor.com
+                  </a>
+                </p>
+                <p>
+                  <strong>{text.followUs[language]}</strong>
+                </p>
+                <ul>
+                  <li>
+                    Facebook{" "}
+                    <a href="https://www.facebook.com/MayorSarmiento">
+                      @sarmientoformayor
+                    </a>
+                  </li>
+                  <li>
+                    Instagram{" "}
+                    <a href="https://instagram.com/sarmientoformayor">
+                      @mayor_sarmiento
+                    </a>
+                  </li>
+                  <li>
+                    Twitter{" "}
+                    <a href="https://twitter.com/mayor_sarmiento">
+                      @sarmiento4mayor
+                    </a>
+                  </li>
+                </ul>
+              </Data>
+            </Cell>
+          </Row>
+        </Table>
+      </Container>
+    </Layout>
+  )
+}
+
+export default Contact
+
 const Container = styled.div`
   position: relative;
   top: 125px;
@@ -215,337 +548,6 @@ const Label = styled.label`
     }
   }
 `
-const Address = styled.div`
-  display: ${props => (props.show ? "block" : "none")};
-`
-
-const Hero = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      heroImage: file(relativePath: { eq: "get-involved.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 2048, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
-  return (
-    <Img
-      fluid={data.heroImage.childImageSharp.fluid}
-      alt="Vicente Samrmiento and team working a food bank"
-    />
-  )
-}
-
-const postContact = async (
-  event,
-  email,
-  fName,
-  lName,
-  phone,
-  sendNewsletter
-) => {
-  event.preventDefault()
-  const contact_form = document.getElementById("ContactForm")
-  let form_errors = false
-  for (let i = 0; i < contact_form.elements.length; i++) {
-    const element = contact_form.elements[i]
-    if (element.required && !element.value) {
-      form_errors = true
-    }
-  }
-  if (!form_errors) {
-    if (sendNewsletter) {
-      const body = { email: email, fName: fName, lName: lName, phone: phone }
-      try {
-        const response = await fetch("/.netlify/functions/create-contact", {
-          method: "POST",
-          body: JSON.stringify(body),
-        })
-        if (!response.error) {
-          console.log("no errors")
-        } else {
-          console.log(response.error)
-        }
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    contact_form.submit()
-  }
-}
-
-const text = {
-  h1: {
-    english: `Get Involved`,
-    spanish: `Involucrate`,
-  },
-  h1_small: {
-    english: `learn how you can make a difference`,
-    spanish: `aprende cómo puedes hacer la diferencia`,
-  },
-  h2: {
-    english: `Send a message`,
-    spanish: `Enviar un mensaje`,
-  },
-  firstName: {
-    english: `* First Name`,
-    spanish: `* Primer Nombre`,
-  },
-  lastName: {
-    english: `* Last Name`,
-    spanish: `* Apellido`,
-  },
-  phoneNumber: {
-    english: `Phone Number`,
-    spanish: `Número De Teléfono`,
-  },
-  emailAddress: {
-    english: `* Email Address`,
-    spanish: `* Correo Electrónico`,
-  },
-  sendYardSign: {
-    english: `Send me a yard sign`,
-    spanish: `Envíenme una letrero de yarda`,
-  },
-  volunteer: {
-    english: `I would like to volunteer`,
-    spanish: `Me gustaría ser voluntario`,
-  },
-  makeDonation: {
-    english: `I would like to make a donation`,
-    spanish: `Me gustaría hacer una donación`,
-  },
-  receiveEmails: {
-    english: `sign me up to receive campaign update emails`,
-    spanish: `registrame para recibir correos electrónicos de actualizaciones de la campaña`,
-  },
-  street: {
-    english: `* Street Address`,
-    spanish: `* Dirección`,
-  },
-  zip: {
-    english: `* Zip Code`,
-    spanish: `* Código postal`,
-  },
-  message: {
-    english: `Message`,
-    spanish: `Mensaje`,
-  },
-  h3: {
-    english: `Other ways to get connected`,
-    spanish: `Otras formas de conectarse`,
-  },
-  writeUs: {
-    english: `Write us at:`,
-    spanish: `Escríbenos a`,
-  },
-  emailUs: {
-    english: `Email us at:`,
-    spanish: `Envíenos un email a`,
-  },
-  followUs: {
-    english: `Follow us on:`,
-    spanish: `Siguenos`,
-  },
-  submit: {
-    english: `SUBMIT`,
-    spanish: `ENVIAR`,
-  },
-}
-
-const Contact = () => {
-  const [email, setEmail] = useState("")
-  const [fName, setFname] = useState("")
-  const [lName, setLname] = useState("")
-  const [phone, setPhone] = useState("")
-  const [street, setStreet] = useState("")
-  const [zip, setZip] = useState("")
-  const [sendNewsletter, setSendNewsletter] = useState(true)
-  const [getYardSign, setGetYardSign] = useState(false)
-  const [volunteer, setVolunteer] = useState(false)
-  const [makeDonation, setMakeDonation] = useState(false)
-  return (
-    <Layout location="/contact">
-      <PageHeader />
-      <SEO title="Contact Vicente Sarmiento" />
-      <Container>
-        <HeroContainer>
-          <HeadingContainer>
-            <H1 className="page-title">
-              {text.h1[language]} <br />
-              <small>{text.h1_small[language]}</small>
-            </H1>
-          </HeadingContainer>
-          <Hero />
-        </HeroContainer>
-        <Table>
-          <Row>
-            <Cell>
-              <h2 style={{ maxWidth: 420, margin: "0 auto" }}>
-                {text.h2[language]}
-              </h2>
-              <Form
-                name="contact"
-                id="ContactForm"
-                method="POST"
-                data-netlify="true"
-              >
-                <input type="hidden" name="form-name" value="contact" />
-                <Input
-                  name="fName"
-                  required
-                  type="text"
-                  placeholder={text.firstName[language]}
-                  onChange={event => setFname(event.target.value)}
-                />
-                <Input
-                  name="lName"
-                  required
-                  type="text"
-                  placeholder={text.lastName[language]}
-                  onChange={event => setLname(event.target.value)}
-                />
-                <Input
-                  name="email"
-                  required
-                  type="email"
-                  placeholder={text.emailAddress[language]}
-                  onChange={event => setEmail(event.target.value)}
-                />
-                <Input
-                  name="phone"
-                  type="tel"
-                  placeholder={text.phoneNumber[language]}
-                  onChange={event => setPhone(event.target.value)}
-                />
-                <CheckBoxes>
-                  {/* <Label>
-                    <input
-                      type="checkbox"
-                      defaultChecked={getYardSign}
-                      onChange={() => setGetYardSign(!getYardSign)}
-                      name="send_yard_sign"
-                      value="Send me a yard sign"
-                    />
-                    <span></span>
-                    <small>{text.sendYardSign[language]}</small>
-                  </Label> */}
-                  <Label>
-                    <input
-                      type="checkbox"
-                      defaultChecked={volunteer}
-                      onChange={() => setVolunteer(!volunteer)}
-                      name="volunteer"
-                      value="I would like to volunteer"
-                    />
-                    <span></span>
-                    <small>{text.volunteer[language]}</small>
-                  </Label>
-                  <Label>
-                    <input
-                      type="checkbox"
-                      defaultChecked={makeDonation}
-                      onChange={() => setMakeDonation(!makeDonation)}
-                      name="make_donation"
-                      value="I would like to make a donation"
-                    />
-                    <span></span>
-                    <small>{text.makeDonation[language]}</small>
-                  </Label>
-                </CheckBoxes>
-                <Address show={getYardSign}>
-                  <Input
-                    name="street"
-                    required={getYardSign}
-                    type="text"
-                    placeholder={text.street[language]}
-                    onChange={event => setStreet(event.target.value)}
-                  />
-                  <Input
-                    name="zip"
-                    required={getYardSign}
-                    type="text"
-                    placeholder={text.zip[language]}
-                    onChange={event => setZip(event.target.value)}
-                  />
-                </Address>
-                <TextArea
-                  name="message"
-                  placeholder={text.message[language]}
-                ></TextArea>
-                <Label>
-                  <input
-                    type="checkbox"
-                    defaultChecked={sendNewsletter}
-                    onChange={() => setSendNewsletter(!sendNewsletter)}
-                  />
-                  <span></span>
-                  <small>{text.receiveEmails[language]}</small>
-                </Label>
-                <Input
-                  type="submit"
-                  value={text.submit[language]}
-                  onClick={event =>
-                    postContact(
-                      event,
-                      email,
-                      fName,
-                      lName,
-                      phone,
-                      sendNewsletter
-                    )
-                  }
-                />
-              </Form>
-            </Cell>
-            <Cell className="valign-center">
-              <Data>
-                <h3>{text.h3[language]}</h3>
-                <p>
-                  <strong>{text.writeUs[language]}</strong> <br />
-                  Sarmiento for Mayor <br />
-                  PO Box 10162 <br />
-                  Santa Ana, CA 92711
-                </p>
-                <p>
-                  <strong>{text.emailUs[language]}</strong>{" "}
-                  <a href="mailto:info@sarmientoformayor.com">
-                    info@sarmientoformayor.com
-                  </a>
-                </p>
-                <p>
-                  <strong>{text.followUs[language]}</strong>
-                </p>
-                <ul>
-                  <li>
-                    Facebook{" "}
-                    <a href="https://www.facebook.com/MayorSarmiento">
-                      @sarmientoformayor
-                    </a>
-                  </li>
-                  <li>
-                    Instagram{" "}
-                    <a href="https://instagram.com/sarmientoformayor">
-                      @mayor_sarmiento
-                    </a>
-                  </li>
-                  <li>
-                    Twitter{" "}
-                    <a href="https://twitter.com/mayor_sarmiento">
-                      @sarmiento4mayor
-                    </a>
-                  </li>
-                </ul>
-              </Data>
-            </Cell>
-          </Row>
-        </Table>
-      </Container>
-    </Layout>
-  )
-}
-
-export default Contact
+// const Address = styled.div`
+//   display: ${props => (props.show ? "block" : "none")};
+// `

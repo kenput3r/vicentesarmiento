@@ -29,19 +29,18 @@ const TableCell = styled.div`
     display: block;
     width: 100%;
   }
-  
+
   .image-wrapper {
     height: calc(100vh - ${props => props.headerHeight}px);
     max-height: calc(100vh - ${props => props.headerHeight}px);
   }
-  
 `
 const NotFoundPage = () => {
   const [headerHeight, setHeaderHeight] = useState(0)
   useEffect(() => {
-    const Header = document.querySelector('header')
+    const Header = document.querySelector("header")
     setHeaderHeight(Header.offsetHeight)
-  })
+  }, [])
   const data = useStaticQuery(graphql`
     query {
       backgroundImage: file(relativePath: { eq: "sarmiento-poster.jpg" }) {
@@ -60,12 +59,21 @@ const NotFoundPage = () => {
       <Container headerHeight={headerHeight}>
         <Table>
           <TableCell>
-            <h1>404<br />NOT FOUND</h1>
+            <h1>
+              404
+              <br />
+              NOT FOUND
+            </h1>
             <p>You just hit a page that doesn&#39;t exist... the sadness.</p>
           </TableCell>
           <TableCell className="image-wrapper" headerHeight={headerHeight}>
             <div className="image-wrapper">
-              <Img fluid={data.backgroundImage.childImageSharp.fluid} alt="Hand drawing of Vicente Sarmiento with text reading Vicente Sarmiento for Santa Ana Mayor" style={{maxHeight: '100%'}} imgStyle={{ objectFit: "contain" }} />
+              <Img
+                fluid={data.backgroundImage.childImageSharp.fluid}
+                alt="Hand drawing of Vicente Sarmiento with text reading Vicente Sarmiento for Santa Ana Mayor"
+                style={{ maxHeight: "100%" }}
+                imgStyle={{ objectFit: "contain" }}
+              />
             </div>
           </TableCell>
         </Table>

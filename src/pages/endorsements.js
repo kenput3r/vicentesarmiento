@@ -50,41 +50,6 @@ const list = {
   ],
 }
 
-const Container = styled.div`
-  position: relative;
-  top: 191px;
-  &:after {
-    content: " ";
-    display: table;
-    margin-bottom: 191px;
-  }
-  @media (max-width: 1024px) {
-    top: 90px;
-  }
-  @media (max-width: 767px) {
-    top: 75px;
-    &:after {
-      content: " ";
-      display: table;
-      margin-bottom: 75px;
-    }
-  }
-`
-const H1 = styled.h1`
-  text-align: center;
-`
-const Wrapper = styled.div`
-  text-align: left;
-  padding: 0 10px 20px;
-  max-width: 640px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 30px;
-
-  li {
-    list-style-type: none;
-  }
-`
 const formatItem = item => {
   const parts = item.split(",")
   let regular_text = parts[0]
@@ -104,9 +69,9 @@ const Endorsements = () => {
     <Layout location="/">
       <SEO title="Vicente Sarmiento's Endorsments" />
       <PageHeader />
-      <Container>
-        <H1 className="page-title">Endorsements</H1>
-        <Wrapper>
+      <Page>
+        <h1 className="page-title">Endorsements</h1>
+        <div className="wrapper">
           <h2>Organizations</h2>
           <ul>
             {list.organizations.map(organization => (
@@ -119,10 +84,48 @@ const Endorsements = () => {
           <ul>{list.commissioners.map(item => formatItem(item))}</ul>
           <h2>Community Leaders</h2>
           <ul>{list.leaders.map(item => formatItem(item))}</ul>
-        </Wrapper>
-      </Container>
+        </div>
+      </Page>
     </Layout>
   )
 }
 
 export default Endorsements
+
+const Page = styled.div`
+  position: relative;
+  top: 191px;
+  &:after {
+    content: " ";
+    display: table;
+    margin-bottom: 191px;
+  }
+  @media (max-width: 1024px) {
+    top: 90px;
+  }
+  @media (max-width: 767px) {
+    top: 75px;
+    &:after {
+      content: " ";
+      display: table;
+      margin-bottom: 75px;
+    }
+  }
+
+  h1 {
+    text-align: left;
+  }
+
+  .wrapper {
+    text-align: left;
+    padding: 0 10px 20px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+
+    li {
+      list-style-type: none;
+    }
+  }
+`

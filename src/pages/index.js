@@ -10,6 +10,23 @@ import Parallax from "../components/parallax"
 import PopUpForm from "../components/PopUpForm"
 import BlogFeed from "../components/BlogFeed"
 
+const IndexPage = () => (
+  <Layout location="/">
+    <Header />
+    <SEO title="Vicente Sarmiento" />
+    <HeroContainer id="HeroContainer">
+      <Hero />
+    </HeroContainer>
+    <BlogFeed />
+    <Parallax />
+    <Videos />
+    <Platform />
+    <PopUpForm />
+  </Layout>
+)
+
+export default IndexPage
+
 const HeroContainer = styled.div`
   @media (max-width: 767px) {
     margin-top: 91px;
@@ -31,20 +48,3 @@ const HeroContainer = styled.div`
     }
   }
 `
-
-const IndexPage = () => (
-  <Layout location="/">
-    <Header />
-    <SEO title="Vicente Sarmiento" />
-    <HeroContainer id="HeroContainer">
-      <Hero />
-    </HeroContainer>
-    <BlogFeed />
-    <Parallax />
-    <Videos />
-    <Platform />
-    <PopUpForm />
-  </Layout>
-)
-
-export default IndexPage
