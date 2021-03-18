@@ -186,7 +186,7 @@ const Gallery = ({ data }) => {
             </span>
             <span>
               <a
-                href={activeImage}
+                href={activeImage.src}
                 download
                 style={{
                   textDecoration: "none",
