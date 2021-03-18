@@ -336,6 +336,7 @@ const Footer = () => {
             href="https://www.facebook.com/MayorSarmiento"
             title="Vicente Sarmiento on Facebook"
             target="_blank"
+            rel="noreferrer"
           >
             <Facebook />
           </a>
@@ -343,6 +344,7 @@ const Footer = () => {
             href="https://www.instagram.com/mayor_sarmiento/"
             title="Viente Sarmiento on Instagram"
             target="_blank"
+            rel="noreferrer"
           >
             <Instagram />
           </a>
@@ -350,6 +352,7 @@ const Footer = () => {
             href="https://twitter.com/mayor_sarmiento"
             title="Vicente Sarmiento on Twitter"
             target="_blank"
+            rel="noreferrer"
           >
             <Twitter />
           </a>
@@ -357,6 +360,7 @@ const Footer = () => {
             href="https://www.youtube.com/channel/UCzsCsW3YJZwkyVwTuqRe6ew"
             title="Vicente Sarmiento on YouTube"
             target="_blank"
+            rel="noreferrer"
           >
             <YouTube />
           </a>
@@ -364,6 +368,7 @@ const Footer = () => {
             href="mailto:info@sarmientoformayor.com"
             title="Email Vicente Sarmiento"
             target="_blank"
+            rel="noreferrer"
           >
             <Email />
           </a>

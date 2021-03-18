@@ -1,72 +1,9 @@
 import React from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
+import parse from "html-react-parser"
 import language from "./language"
 
-const Container = styled.div`
-  background-color: #f2f2f2;
-  box-sizing: border-box;
-  padding-top: 30px;
-
-  @media (min-width: 768px) {
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
-`
-const Wrapper = styled.div`
-  max-width: 1140px;
-  margin: 0 auto;
-  text-align: center;
-`
-const H2 = styled.h2``
-const InlineBlock = styled.div`
-  box-sizing: border-box;
-  display: inline-block;
-  width: calc(33% - 40px);
-  max-width: 100%;
-  margin: 20px;
-  padding: 10px;
-  vertical-align: text-top;
-
-  @media (max-width: 767px) {
-    width: 100%;
-    margin: 20px 0;
-  }
-
-  .read-more {
-    text-align: left;
-    a {
-      color: rgb(34, 66, 137);
-      font-weight: bold;
-      text-decoration: none;
-    }
-  }
-`
-const Title = styled.h3`
-  text-align: left;
-`
-const Excerpt = styled.p`
-  text-align: left;
-`
-const POSTS_QUERY = graphql`
-  query {
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      limit: 3
-    ) {
-      edges {
-        node {
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            slug
-            title
-          }
-          excerpt
-        }
-      }
-    }
-  }
-`
 const text = {
   updates: {
     english: `Updates`,
@@ -81,27 +18,100 @@ const text = {
 const BlogFeed = () => {
   const data = useStaticQuery(POSTS_QUERY)
   return (
-    <Container>
-      <Wrapper>
-        <H2>{text.updates[language]}</H2>
-        {data.allMarkdownRemark.edges.map(edge => (
-          <InlineBlock>
-            <Title>
-              {edge.node.frontmatter.title} &nbsp;
+    <Component>
+      <div className="wrapper">
+        <h2>{text.updates[language]}</h2>
+        {data.allWpPost.edges.map(edge => (
+          <article key={edge.node.uri}>
+            <h3>
+              {edge.node.title} &nbsp;
               <br />
-              <small>{edge.node.frontmatter.date}</small>
-            </Title>
-            <Excerpt>{edge.node.excerpt}</Excerpt>
+              <small>{edge.node.date}</small>
+            </h3>
+            <div className="excerpt">{parse(edge.node.excerpt)}</div>
             <p className="read-more">
-              <Link to={edge.node.frontmatter.slug}>
-                {text.read_more[language]}
-              </Link>
+              <Link to={edge.node.uri}>{text.read_more[language]}</Link>
             </p>
-          </InlineBlock>
+          </article>
         ))}
-      </Wrapper>
-    </Container>
+      </div>
+    </Component>
   )
 }
 
 export default BlogFeed
+
+const Component = styled.div`
+  background-color: #f2f2f2;
+  box-sizing: border-box;
+  padding-top: 30px;
+  @media (min-width: 768px) {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .wrapper {
+    max-width: 1140px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .h3 {
+    text-align: left;
+  }
+
+  article {
+    box-sizing: border-box;
+    display: inline-block;
+    width: calc(33% - 40px);
+    max-width: 100%;
+    margin: 20px;
+    padding: 10px;
+    text-align: left;
+    vertical-align: text-top;
+    @media (max-width: 767px) {
+      width: 100%;
+      margin: 20px 0;
+    }
+
+    .excerpt {
+      p::after {
+        content: "...";
+      }
+    }
+
+    p {
+      text-align: left;
+    }
+
+    .read-more {
+      text-align: left;
+      a {
+        color: rgb(34, 66, 137);
+        font-weight: bold;
+        text-decoration: none;
+      }
+    }
+  }
+`
+
+const POSTS_QUERY = graphql`
+  query PostsQuery {
+    allWpPost(
+      filter: {
+        categories: { nodes: { elemMatch: { name: { eq: "Updates" } } } }
+      }
+      sort: { fields: [date], order: DESC }
+      limit: 3
+    ) {
+      edges {
+        node {
+          excerpt
+          date(formatString: "MMMM DD, YYYY")
+          title
+          uri
+        }
+      }
+    }
+  }
+`

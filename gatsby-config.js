@@ -1,3 +1,6 @@
+require("dotenv").config({
+  path: `.env`,
+})
 const { createProxyMiddleware } = require("http-proxy-middleware")
 module.exports = {
   siteMetadata: {
@@ -7,6 +10,18 @@ module.exports = {
     language: `english`,
   },
   plugins: [
+    {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        url:
+          process.env.WPGRAPHQL_URL ||
+          `https://wpgatsbydemo.wpengine.com/graphql`,
+        schema: {
+          perPage: 10,
+          timeout: 60000,
+        },
+      },
+    },
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     {
@@ -23,9 +38,17 @@ module.exports = {
         path: `${__dirname}/src/posts`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/src/data`,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-remark`,
+    `gatsby-transformer-json`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

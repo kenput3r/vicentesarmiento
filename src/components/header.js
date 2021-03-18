@@ -7,29 +7,6 @@ import MobileDrawer from "./MobileDrawer"
 import language from "./language"
 import navigationText from "./navigationText"
 
-const DesktopHeader = styled.nav`
-  display: table;
-  margin: 0 auto;
-  padding: 1rem 1.0875rem;
-  position: relative;
-  width: 100%;
-  z-index: 2;
-
-  @media (max-width: 1024px) {
-    display: none;
-  }
-`
-const Donate = styled.a`
-  background-color: #f1c80f;
-  border: 2px solid #f1c80f;
-  border-radius: 3px;
-  color: #224289;
-  display: inline-block;
-  padding: 13px;
-  text-decoration: none;
-  vertical-align: top;
-`
-
 const Header = () => {
   const [logoWidth, setLogoWidth] = useState(400)
   const [lastScrollY, setLastScrollY] = useState(0)
@@ -56,6 +33,7 @@ const Header = () => {
     return function cleanup() {
       window.removeEventListener("scroll", handleScroll)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const text = {
@@ -105,17 +83,17 @@ const Header = () => {
             <Link to="/gallery/">{text.media[language]}</Link>
           </div>
           <div className="desktop-link">
-            <Link to="/updates/">UPDATES</Link>
+            <Link to="/blog/1/">UPDATES</Link>
           </div>
           <div className="desktop-link">
             <Link to="/endorsements/">ENDORSEMENTS</Link>
           </div>
-          <Donate
-            className="button"
+          <a
+            className="button donate"
             href="https://www.efundraisingconnections.com/c/VicenteSarmiento/"
           >
             {text.donate[language]}
-          </Donate>
+          </a>
         </div>
       </DesktopHeader>
       <MobileHeader drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
@@ -125,3 +103,27 @@ const Header = () => {
 }
 
 export default Header
+
+const DesktopHeader = styled.nav`
+  display: table;
+  margin: 0 auto;
+  padding: 1rem 1.0875rem;
+  position: relative;
+  width: 100%;
+  z-index: 2;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+
+  .donate {
+    background-color: #f1c80f;
+    border: 2px solid #f1c80f;
+    border-radius: 3px;
+    color: #224289;
+    display: inline-block;
+    padding: 13px;
+    text-decoration: none;
+    vertical-align: top;
+  }
+`

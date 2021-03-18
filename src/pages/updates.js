@@ -111,7 +111,7 @@ const Updates = () => {
         <Wrapper>
           <h1 className="page-title">{text.updates[language]}</h1>
           {data.allMarkdownRemark.edges.map(edge => (
-            <Block>
+            <Block key={edge.node.frontmatter.slug}>
               <Title>
                 {edge.node.frontmatter.title} &nbsp;
                 <br />
