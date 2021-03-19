@@ -20,7 +20,7 @@ const Logo = () => {
   }
   const data = useStaticQuery(graphql`
     query {
-      logo: file(relativePath: { eq: "mayor-sarmiento.png" }) {
+      logo: file(relativePath: { eq: "vicente-sarmiento-santa-ana-mayor.png" }) {
         childImageSharp {
           fluid(maxWidth: 400, quality: 100) {
             ...GatsbyImageSharpFluid
