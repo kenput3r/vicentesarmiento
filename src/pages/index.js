@@ -9,6 +9,7 @@ import Platform from "../components/platform"
 import Parallax from "../components/parallax"
 import PopUpForm from "../components/PopUpForm"
 import BlogFeed from "../components/BlogFeed"
+import ReviveSantaAna from "../components/revive-santa-ana"
 
 const IndexPage = () => (
   <Layout location="/">
@@ -17,6 +18,7 @@ const IndexPage = () => (
     <HeroContainer id="HeroContainer">
       <Hero />
     </HeroContainer>
+    <ReviveSantaAna />
     <BlogFeed />
     <Parallax />
     <Videos />
