@@ -18,7 +18,6 @@ const IndexPage = () => (
     <HeroContainer id="HeroContainer">
       <Hero />
     </HeroContainer>
-    <ReviveSantaAna />
     <BlogFeed />
     <Parallax />
     <Videos />

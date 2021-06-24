@@ -4,7 +4,7 @@ import language from "./language"
 const Videos = () => {
   const text = {
     h2: {
-      english: `Revive Santa Ana`,
+      english: `COVID-19 Update`,
       spanish: `Mensaje De Vicente`,
     },
   }
@@ -23,7 +23,7 @@ const Videos = () => {
             title="Santa Ana Update On Covid"
             width="560"
             height="315"
-            src="https://www.youtube.com/embed/f5IRBbZim4c?rel=0"
+            src="https://www.youtube.com/embed/6ItE5gVRb0g?rel=0"
             frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
